@@ -98,10 +98,10 @@
         "password": "FREQBOT_PASSWORD"
     },
     "bot_name": "Freqtrade bot B",
-    "user_data_dir": "/opt/freqtrade/user_data/",
-    "strategy_path": "/opt/freqtrade/user_data/",
+    "user_data_dir": "~/freqtrade/user_data/",
+    "strategy_path": "~/freqtrade/user_data/strategies",
     "strategy": "SmaRsiStrategy",
-    "db_url": "sqlite:////opt/freqtrade/user_data/tradesv3_b.sqlite",
+    "db_url": "sqlite:///~/freqtrade/user_data/tradesv3_b.sqlite",
     "logfile": "syslog:/dev/log",
     "initial_state": "running",
     "forcebuy_enable": false,
