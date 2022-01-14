@@ -2,8 +2,8 @@
 Description=Freqtrade bot B
 
 [Service]
-WorkingDirectory=~/freqtrade
-ExecStart=~/freqtrade/.env/bin/freqtrade trade --config ~/freqtrade/user_data/config_b.json
+WorkingDirectory=/home/ubuntu/freqtrade
+ExecStart=/home/ubuntu/freqtrade/.env/bin/freqtrade trade --config /home/ubuntu/freqtrade/user_data/config_b.json
 Restart=always
 RestartSec=10
 Type=notify
