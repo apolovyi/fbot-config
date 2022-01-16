@@ -2,8 +2,8 @@
 Description=Freqtrade bot A
 
 [Service]
-WorkingDirectory=/home/ubuntu/freqtrade
-ExecStart=/home/ubuntu/freqtrade/.env/bin/freqtrade trade --config /home/ubuntu/freqtrade/user_data/config_a.json
+WorkingDirectory=/opt/freqtrade
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config_a.json
 Restart=always
 RestartSec=10
 Type=notify
@@ -11,9 +11,6 @@ NotifyAccess=all
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=freqtrade_a
-User=ubuntu
-Group=ubuntu
-Environment=NODE_ENV=production
 
 [Install]
 WantedBy=multi-user.target

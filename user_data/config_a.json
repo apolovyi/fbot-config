@@ -98,10 +98,10 @@
         "password": "FREQBOT_PASSWORD"
     },
     "bot_name": "Freqtrade bot A",
-    "user_data_dir": "/home/ubuntu/freqtrade/user_data/",
-    "strategy_path": "/home/ubuntu/freqtrade/user_data/strategies",
+    "user_data_dir": "/opt/freqtrade/user_data/",
+    "strategy_path": "/opt/freqtrade/user_data/strategies",
     "strategy": "SampleStrategy",
-    "db_url": "sqlite:////home/ubuntu/freqtrade/user_data/tradesv3_a.sqlite",
+    "db_url": "sqlite:////opt/freqtrade/user_data/tradesv3_a.sqlite",
     "logfile": "syslog:/dev/log",
     "initial_state": "running",
     "forcebuy_enable": false,
