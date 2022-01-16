@@ -93,7 +93,7 @@
         "verbosity": "error",
         "enable_openapi": false,
         "jwt_secret_key": "FREQBOT_JWT_SECRET",
-        "CORS_origins": ["http://localhost:7070"],
+        "CORS_origins": [],
         "username": "FREQBOT_USERNAME",
         "password": "FREQBOT_PASSWORD"
     },
