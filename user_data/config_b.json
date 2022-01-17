@@ -88,12 +88,12 @@
     },
     "api_server": {
         "enabled": true,
-        "listen_ip_address": "0.0.0.0",
-        "listen_port": 7071,
+        "listen_ip_address": "127.0.0.1",
+        "listen_port": 8081,
         "verbosity": "error",
         "enable_openapi": false,
         "jwt_secret_key": "FREQBOT_JWT_SECRET",
-        "CORS_origins": [],
+        "CORS_origins": ["*"],
         "username": "FREQBOT_USERNAME",
         "password": "FREQBOT_PASSWORD"
     },
