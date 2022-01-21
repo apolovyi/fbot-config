@@ -28,6 +28,9 @@
 		"sell": "limit",
 		"forcebuy": "market",
 		"forcesell": "market",
+		"stoploss": "market",
+		"stoploss_on_exchange": false,
+		"stoploss_on_exchange_interval": 60,
 		"stoploss": -0.30,
 		"trailing_stop": true
 	},
