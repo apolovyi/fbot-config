@@ -218,11 +218,11 @@ class SampleStrategy(IStrategy):
         dataframe['bb_middleband'] = bollinger['mid']
         dataframe['bb_upperband'] = bollinger['upper']
         dataframe["bb_percent"] = (
-            (dataframe["close"] - dataframe["bb_lowerband"]) /
-            (dataframe["bb_upperband"] - dataframe["bb_lowerband"])
+                (dataframe["close"] - dataframe["bb_lowerband"]) /
+                (dataframe["bb_upperband"] - dataframe["bb_lowerband"])
         )
         dataframe["bb_width"] = (
-            (dataframe["bb_upperband"] - dataframe["bb_lowerband"]) / dataframe["bb_middleband"]
+                (dataframe["bb_upperband"] - dataframe["bb_lowerband"]) / dataframe["bb_middleband"]
         )
 
         # Bollinger Bands - Weighted (EMA based instead of SMA)
@@ -347,10 +347,10 @@ class SampleStrategy(IStrategy):
         dataframe.loc[
             (
                 # Signal: RSI crosses above 30
-                (qtpylib.crossed_above(dataframe['rsi'], self.buy_rsi.value)) &
-                (dataframe['tema'] <= dataframe['bb_middleband']) &  # Guard: tema below BB middle
-                (dataframe['tema'] > dataframe['tema'].shift(1)) &  # Guard: tema is raising
-                (dataframe['volume'] > 0)  # Make sure Volume is not 0
+                    (qtpylib.crossed_above(dataframe['rsi'], self.buy_rsi.value)) &
+                    (dataframe['tema'] <= dataframe['bb_middleband']) &  # Guard: tema below BB middle
+                    (dataframe['tema'] > dataframe['tema'].shift(1)) &  # Guard: tema is raising
+                    (dataframe['volume'] > 0)  # Make sure Volume is not 0
             ),
             'buy'] = 1
 
@@ -366,10 +366,10 @@ class SampleStrategy(IStrategy):
         dataframe.loc[
             (
                 # Signal: RSI crosses above 70
-                (qtpylib.crossed_above(dataframe['rsi'], self.sell_rsi.value)) &
-                (dataframe['tema'] > dataframe['bb_middleband']) &  # Guard: tema above BB middle
-                (dataframe['tema'] < dataframe['tema'].shift(1)) &  # Guard: tema is falling
-                (dataframe['volume'] > 0)  # Make sure Volume is not 0
+                    (qtpylib.crossed_above(dataframe['rsi'], self.sell_rsi.value)) &
+                    (dataframe['tema'] > dataframe['bb_middleband']) &  # Guard: tema above BB middle
+                    (dataframe['tema'] < dataframe['tema'].shift(1)) &  # Guard: tema is falling
+                    (dataframe['volume'] > 0)  # Make sure Volume is not 0
             ),
             'sell'] = 1
         return dataframe

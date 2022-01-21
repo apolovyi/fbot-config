@@ -1,0 +1,29 @@
+{
+	"exchange": {
+		"pair_whitelist": [
+			"AVAX/USDT",
+			"UNI/USDT",
+			"XRP/USDT",
+			"ALGO/USDT",
+			"ETH/USDT",
+			"SOL/USDT",
+			"MATIC/USDT",
+			"BTC/USDT",
+			"XPR/USDT",
+			"LUNA/USDT",
+			"XLM/USDT",
+			"FTM/USDT",
+			"ONE/USDT"
+		],
+		"pair_blacklist": [
+		]
+	},
+	"pairlists": [
+		{
+			"method": "ShuffleFilter"
+		},
+		{
+			"method": "StaticPairList"
+		}
+	]
+}

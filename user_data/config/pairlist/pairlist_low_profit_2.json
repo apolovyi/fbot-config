@@ -1,0 +1,23 @@
+{
+	"exchange": {
+		"pair_whitelist": [
+		],
+		"pair_blacklist": [
+		]
+	},
+	"pairlists": [
+		{
+			"method": "PrecisionFilter"
+		},
+		{
+			"method": "ShuffleFilter"
+		},
+		{
+			"method": "LowProfitPairs",
+			"lookback_period_candles": 3,
+			"trade_limit": 2,
+			"stop_duration_candles": 4,
+			"required_profit": 0.02
+		}
+	]
+}

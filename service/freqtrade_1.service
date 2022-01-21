@@ -1,0 +1,16 @@
+[Unit]
+Description=Freqtrade bot 1
+
+[Service]
+WorkingDirectory=/opt/freqtrade
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/master.json --config /opt/freqtrade/user_data/config/SmaRsiHopt_8080.json
+Restart=always
+RestartSec=10
+Type=notify
+NotifyAccess=all
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=freqtrade_1
+
+[Install]
+WantedBy=multi-user.target

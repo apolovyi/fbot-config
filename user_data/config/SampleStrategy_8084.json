@@ -1,0 +1,59 @@
+{
+	"max_open_trades": -1,
+	"stake_currency": "USDT",
+	"stake_amount": "unlimited",
+	"available_capital": 1000,
+	"amend_last_stake_amount": true,
+	"tradable_balance_ratio": 0.99,
+	"fiat_display_currency": "USD",
+	"dry_run": true,
+	"dry_run_wallet": 1000,
+	"cancel_open_orders_on_exit": false,
+	"unfilledtimeout": {
+		"buy": 10,
+		"sell": 20,
+		"unit": "minutes"
+	},
+	"bid_strategy": {
+		"price_side": "bid",
+		"use_order_book": true,
+		"order_book_top": 2
+	},
+	"ask_strategy": {
+		"price_side": "ask",
+		"use_order_book": true,
+		"order_book_top": 2
+	},
+	"order_types": {
+		"buy": "market",
+		"sell": "market",
+		"emergencysell": "market",
+		"forcebuy": "market",
+		"forcesell": "market"
+	},
+	"pairlists": [
+		{
+			"method": "VolumePairList",
+			"number_assets": 15,
+			"sort_key": "quoteVolume",
+			"refresh_period": 1800
+		},
+		{
+			"method": "AgeFilter",
+			"min_days_listed": 30
+		},
+		{
+			"method": "RangeStabilityFilter",
+			"lookback_days": 5,
+			"min_rate_of_change": 0.15,
+			"max_rate_of_change": 0.85,
+			"refresh_period": 1440
+		}
+	],
+	"api_server": {
+		"listen_port": 8084
+	},
+	"bot_name": "SampleStrategy 8084",
+	"strategy": "SampleStrategy",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/SampleStrategy_8084.sqlite"
+}

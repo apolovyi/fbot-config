@@ -1,0 +1,32 @@
+{
+	"exchange": {
+		"pair_whitelist": [
+		],
+		"pair_blacklist": [
+		]
+	},
+	"pairlists": [
+		{
+			"method": "PrecisionFilter"
+		},
+		{
+			"method": "ShuffleFilter"
+		},
+		{
+			"method": "AgeFilter",
+			"min_days_listed": 30
+		},
+		{
+			"method": "PerformanceFilter",
+			"minutes": 2,
+			"min_profit": 0.05
+		},
+		{
+			"method": "RangeStabilityFilter",
+			"lookback_days": 5,
+			"min_rate_of_change": 0.1,
+			"max_rate_of_change": 0.85,
+			"refresh_period": 1440
+		}
+	]
+}

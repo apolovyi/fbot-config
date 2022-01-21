@@ -1,0 +1,16 @@
+[Unit]
+Description=Freqtrade bot 9
+
+[Service]
+WorkingDirectory=/opt/freqtrade
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/master.json --config /opt/freqtrade/user_data/config/SmaRsi_8089.json --config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json.json
+Restart=always
+RestartSec=10
+Type=notify
+NotifyAccess=all
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=freqtrade_9
+
+[Install]
+WantedBy=multi-user.target
