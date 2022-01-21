@@ -68,9 +68,5 @@
 	},
 	"bot_name": "SmaRsiHopt 8080",
 	"strategy": "SmaRsiHopt",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsiHopt_8080.sqlite",
-	"trailing_stop": false,
-	"trailing_stop_positive": null,
-	"trailing_stop_positive_offset": 0.0,
-	"trailing_only_offset_is_reached": false
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsiHopt_8080.sqlite"
 }
