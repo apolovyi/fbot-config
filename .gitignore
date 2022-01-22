@@ -1,3 +1,10 @@
 /private/*
 .DS_Store
 .idea
+/user_data/hyperopts/
+/user_data/data/
+/user_data/backtest_results/
+/user_data/hyperopt_results/
+/user_data/notebooks/
+/user_data/plot/
+/user_data/logs/
