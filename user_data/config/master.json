@@ -27,7 +27,6 @@
 	},
 	"user_data_dir": "/opt/freqtrade/user_data/",
 	"strategy_path": "/opt/freqtrade/user_data/strategies",
-	"logfile": "syslog:/dev/log",
 	"initial_state": "running",
 	"forcebuy_enable": false,
 	"internals": {
