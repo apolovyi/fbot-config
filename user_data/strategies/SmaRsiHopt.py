@@ -15,7 +15,7 @@ import freqtrade.vendor.qtpylib.indicators as qtpylib
 class SmaRsiHopt(IStrategy):
     # This strategy does not use crossovers but just enters/exits trades
     # when 'is above' / 'is under' conditions are met.
-    timeframe = "5m"
+    timeframe = "4h"
     stoploss = -0.4
     minimal_roi = {"0": 100.0}
 
@@ -51,6 +51,12 @@ class SmaRsiHopt(IStrategy):
 
         dataframe["rsi"] = ta.RSI(dataframe, timeperiod=14)
 
+        # dataframe['wma5'] = ta.WMA(dataframe, timeperiod=5)
+        # dataframe['wma50'] = ta.WMA(dataframe, timeperiod=5)
+
+        # dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
+        # dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+
         return dataframe
 
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
@@ -61,9 +67,7 @@ class SmaRsiHopt(IStrategy):
         )
 
         if conditions:
-            dataframe.loc[
-                reduce(lambda x, y: x & y, conditions),
-                'buy'] = 1
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), 'buy'] = 1
 
         return dataframe
 
@@ -75,8 +79,6 @@ class SmaRsiHopt(IStrategy):
         )
 
         if conditions:
-            dataframe.loc[
-                reduce(lambda x, y: x & y, conditions),
-                'sell'] = 1
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), 'sell'] = 1
 
         return dataframe

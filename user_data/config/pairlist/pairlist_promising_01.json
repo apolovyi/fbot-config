@@ -1,14 +1,14 @@
 {
 	"exchange": {
 		"pair_whitelist": [
+			"BTC/USDT",
+			"ETH/USDT",
 			"AVAX/USDT",
 			"UNI/USDT",
 			"XRP/USDT",
 			"ALGO/USDT",
-			"ETH/USDT",
 			"SOL/USDT",
 			"MATIC/USDT",
-			"BTC/USDT",
 			"XPR/USDT",
 			"LUNA/USDT",
 			"XLM/USDT",
@@ -20,10 +20,10 @@
 	},
 	"pairlists": [
 		{
-			"method": "ShuffleFilter"
+			"method": "StaticPairList"
 		},
 		{
-			"method": "StaticPairList"
+			"method": "ShuffleFilter"
 		}
 	]
 }
