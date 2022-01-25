@@ -60,7 +60,7 @@ class SampleStrategy(IStrategy):
     sell_rsi = IntParameter(low=50, high=100, default=70, space='sell', optimize=True, load=True)
 
     # Optimal timeframe for the strategy.
-    timeframe = '1d'
+    timeframe = '4h'
 
     # Run "populate_indicators()" only for new candle.
     process_only_new_candles = False

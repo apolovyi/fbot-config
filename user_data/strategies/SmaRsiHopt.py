@@ -22,26 +22,26 @@ class SmaRsiHopt(IStrategy):
     # --- Plotting ---
 
     # Use this section if you want to plot the indicators on a chart after backtesting
-    plot_config = {
-        'main_plot': {
-            # Create sma line
-            'sma': {'color': 'blue'},
-        },
-        'subplots': {
-            # Create rsi subplot
-            "rsi": {
-                'rsi': {'color': 'orange'},
-                'rsi_buy_hline': {'color': 'grey', 'plotly': {'opacity': 0.4}},
-                'rsi_sell_hline': {'color': 'grey', 'plotly': {'opacity': 0.4}}
-            },
-        },
-    }
+    # plot_config = {
+    #     'main_plot': {
+    #         # Create sma line
+    #         'sma': {'color': 'blue'},
+    #     },
+    #     'subplots': {
+    #         # Create rsi subplot
+    #         "rsi": {
+    #             'rsi': {'color': 'orange'},
+    #             'rsi_buy_hline': {'color': 'grey', 'plotly': {'opacity': 0.4}},
+    #             'rsi_sell_hline': {'color': 'grey', 'plotly': {'opacity': 0.4}}
+    #         },
+    #     },
+    # }
 
     # --- Define spaces for the indicators ---
 
     # Buy space - UNCOMMENT THIS FOR HYPEROPTING
     sma = IntParameter(13, 56, default=22, space="buy")
-    rsi_buy_hline = IntParameter(30, 70, default=67, space="buy")
+    rsi_buy_hline = IntParameter(30, 70, default=30, space="buy")
     rsi_sell_hline = IntParameter(75, 95, default=85, space="sell")
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
@@ -51,11 +51,14 @@ class SmaRsiHopt(IStrategy):
 
         dataframe["rsi"] = ta.RSI(dataframe, timeperiod=14)
 
-        # dataframe['wma5'] = ta.WMA(dataframe, timeperiod=5)
-        # dataframe['wma50'] = ta.WMA(dataframe, timeperiod=5)
+        dataframe['wma5'] = ta.WMA(dataframe, timeperiod=5)
+        dataframe['wma50'] = ta.WMA(dataframe, timeperiod=5)
 
-        # dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
-        # dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
+        dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+
+        print(dataframe)
+        print(metadata)
 
         return dataframe
 

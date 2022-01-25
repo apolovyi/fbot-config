@@ -38,6 +38,6 @@
 		"listen_port": 8080
 	},
 	"bot_name": "SmaRsiHopt 8080",
-	"strategy": "SmaRsiHopt",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsiHopt_8080.sqlite"
+	"strategy": "Apollo11",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/Apollo11.sqlite"
 }
