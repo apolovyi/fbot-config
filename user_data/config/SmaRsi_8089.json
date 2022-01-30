@@ -9,12 +9,6 @@
 	"dry_run": true,
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
-	"minimal_roi": {
-		"0": 0.577,
-		"10": 0.379,
-		"20": 0.15,
-		"30": 0
-	},
 	"unfilledtimeout": {
 		"buy": 2,
 		"sell": 4,
@@ -43,7 +37,6 @@
 	"api_server": {
 		"listen_port": 8089
 	},
-	"bot_name": "SmaRs 8089",
-	"strategy": "SmaRsi",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsi_8089.sqlite"
+	"strategy": "MyStrategy03",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8089.sqlite"
 }

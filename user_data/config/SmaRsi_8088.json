@@ -43,7 +43,6 @@
 	"api_server": {
 		"listen_port": 8088
 	},
-	"bot_name": "SmaRs 8088",
-	"strategy": "SmaRsi",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsi_8088.sqlite"
+	"strategy": "MyStrategy03",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8088.sqlite"
 }

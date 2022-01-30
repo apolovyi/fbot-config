@@ -256,8 +256,8 @@ class CryptoFrog(IStrategy):
         ssldown, sslup = SSLChannels_ATR(dataframe, length=21)
         dataframe['sroc'] = SROC(dataframe, roclen=21, emalen=13, smooth=21)
         dataframe['ssl-dir'] = np.where(sslup > ssldown, 'up', 'down')
-        dataframe['rmi-up'] = np.where(dataframe['rmi'] >= dataframe['rmi'].shift(), 1, 0)
-        dataframe['rmi-up-trend'] = np.where(dataframe['rmi-up'].rolling(5).sum() >= 3, 1, 0)
+        dataframe['rmi_up'] = np.where(dataframe['rmi'] >= dataframe['rmi'].shift(), 1, 0)
+        dataframe['rmi_up_trend'] = np.where(dataframe['rmi_up'].rolling(5).sum() >= 3, 1, 0)
         dataframe['candle-up'] = np.where(dataframe['close'] >= dataframe['close'].shift(), 1, 0)
         dataframe['candle-up-trend'] = np.where(dataframe['candle-up'].rolling(5).sum() >= 3, 1, 0)
 
@@ -296,8 +296,8 @@ class CryptoFrog(IStrategy):
             self.custom_trade_info[metadata['pair']]['sroc'] = dataframe[['date', 'sroc']].copy().set_index('date')
             self.custom_trade_info[metadata['pair']]['ssl-dir'] = dataframe[['date', 'ssl-dir']].copy().set_index(
                 'date')
-            self.custom_trade_info[metadata['pair']]['rmi-up-trend'] = dataframe[
-                ['date', 'rmi-up-trend']].copy().set_index('date')
+            self.custom_trade_info[metadata['pair']]['rmi_up_trend'] = dataframe[
+                ['date', 'rmi_up_trend']].copy().set_index('date')
             self.custom_trade_info[metadata['pair']]['candle-up-trend'] = dataframe[
                 ['date', 'candle-up-trend']].copy().set_index('date')
 
@@ -443,12 +443,12 @@ class CryptoFrog(IStrategy):
         if self.custom_trade_info and trade and trade.pair in self.custom_trade_info:
             if self.config['runmode'].value in ('live', 'dry_run'):
                 dataframe, last_updated = self.dp.get_analyzed_dataframe(pair=trade.pair, timeframe=self.timeframe)
-                rmi_trend = dataframe['rmi-up-trend'].iat[-1]
+                rmi_trend = dataframe['rmi_up_trend'].iat[-1]
                 candle_trend = dataframe['candle-up-trend'].iat[-1]
                 ssl_dir = dataframe['ssl-dir'].iat[-1]
             # If in backtest or hyperopt, get the indicator values out of the trades dict (Thanks @JoeSchr!)
             else:
-                rmi_trend = self.custom_trade_info[trade.pair]['rmi-up-trend'].loc[current_time]['rmi-up-trend']
+                rmi_trend = self.custom_trade_info[trade.pair]['rmi_up_trend'].loc[current_time]['rmi_up_trend']
                 candle_trend = self.custom_trade_info[trade.pair]['candle-up-trend'].loc[current_time][
                     'candle-up-trend']
                 ssl_dir = self.custom_trade_info[trade.pair]['ssl-dir'].loc[current_time]['ssl-dir']

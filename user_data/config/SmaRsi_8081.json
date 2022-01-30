@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 20,
+	"max_open_trades": 30,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -43,7 +43,7 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 10,
+			"number_assets": 30,
 			"sort_key": "quoteVolume",
 			"refresh_period": 800
 		},
@@ -62,7 +62,6 @@
 	"api_server": {
 		"listen_port": 8081
 	},
-	"bot_name": "SmaRsi 8081",
-	"strategy": "SmaRsi",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/SmaRsi_8081.sqlite"
+	"strategy": "MyStrategy03",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8081.sqlite"
 }

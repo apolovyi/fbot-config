@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 15,
+	"max_open_trades": 10,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -34,25 +34,37 @@
 		"stoploss_on_exchange": false,
 		"stoploss_on_exchange_interval": 60
 	},
-	"api_server": {
-		"listen_port": 8085
+	"exchange": {
+		"pair_whitelist": [
+		],
+		"pair_blacklist": [
+		]
 	},
 	"pairlists": [
 		{
 			"method": "AgeFilter",
-			"min_days_listed": 20
+			"min_days_listed": 15
+		},
+		{
+			"method": "RangeStabilityFilter",
+			"lookback_days": 3,
+			"min_rate_of_change": 0.1,
+			"refresh_period": 360
 		},
 		{
 			"method": "VolatilityFilter",
-			"lookback_days": 3,
-			"min_volatility": 0.15,
-			"max_volatility": 0.8,
-			"refresh_period": 14400
+			"lookback_days": 50,
+			"min_volatility": 0.05,
+			"max_volatility": 0.67,
+			"refresh_period": 86400
 		},
 		{
 			"method": "ShuffleFilter"
 		}
 	],
+	"api_server": {
+		"listen_port": 8083
+	},
 	"strategy": "MyStrategy03",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8085.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8083.sqlite"
 }
