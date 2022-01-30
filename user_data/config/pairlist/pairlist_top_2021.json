@@ -35,7 +35,6 @@
 			"MKR/USDT",
 			"GRT/USDT",
 			"FTT/USDT",
-			"DCR/USDT",
 			"SUSHI/USDT",
 			"UMA/USDT",
 			"KSM/USDT",
@@ -47,21 +46,19 @@
 			"BAT/USDT",
 			"BTT/USDT",
 			"STX/USDT",
-			"ZRX/USDT",
 			"LUNA/USDT",
 			"REN/USDT",
-			"NEAR/USDT",
-			"ICX/USDT"
+			"NEAR/USDT"
 		],
 		"pair_blacklist": [
 		]
 	},
 	"pairlists": [
 		{
-			"method": "ShuffleFilter"
+			"method": "StaticPairList"
 		},
 		{
-			"method": "StaticPairList"
+			"method": "ShuffleFilter"
 		}
 	]
 }
