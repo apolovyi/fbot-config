@@ -7,6 +7,7 @@ from pandas import DataFrame
 
 import talib.abstract as ta
 import numpy as np
+import pandas as pd
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 
 
@@ -30,10 +31,10 @@ class MyStrategy03_15m(IStrategy):
     timeframe = '15m'
 
     # signal controls
-    buy_signal_1 = False
+    buy_signal_1 = True
     buy_signal_2 = True
     buy_signal_3 = True
-    sell_signal_1 = False
+    sell_signal_1 = True
     sell_signal_2 = True
     sell_signal_3 = True
 
@@ -55,9 +56,21 @@ class MyStrategy03_15m(IStrategy):
 
     plot_config = {
         'main_plot': {
-            'tema_s': {'color': 'blue'},
-            'ema_m': {'color': 'red'},
-            'ema_l': {'color': 'black'},
+            'ha_open': {'color': 'blue'},
+            # 'r1': {'color': 'red'},
+            # 's2': {'color': 'violet'},
+            # 'r2': {'color': 'pink'},
+            # 's3': {'color': 'green'},
+            # 'r3': {'color': 'orange'},
+            'ha_close': {'color': 'black'},
+            'ema_low': {
+                'color': 'green',  # optional
+                'fill_to': 'ema_high',
+                # 'fill_label': 'Ichimoku Cloud',  # optional
+                'fill_color': 'rgba(255,76,46,0.2)',  # optional
+            },
+            # plot senkou_b, too. Not only the area to it.
+            'ema_high': {}
         },
         'subplots': {
             "rsi": {
@@ -76,19 +89,35 @@ class MyStrategy03_15m(IStrategy):
 
         # 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
 
-        dataframe['rsi_buy_hline'] = 30
-        dataframe['rsi_sell_hline'] = 70
+        # dataframe['hl'] = dataframe['low'].rolling(21).min()
+        # dataframe['hh'] = dataframe['high'].rolling(21).max()
+        # dataframe = pivots_points(dataframe)
+        # print(dataframe)
 
-        dataframe['adx_trendline'] = 17
+        # dataframe['rsi_buy_hline'] = 30
+        # dataframe['rsi_sell_hline'] = 70
+        #
+        # dataframe['adx_trendline'] = 17
+        #
+        # dataframe['rsi'] = ta.RSI(dataframe, timeperiod=8)
+        #
+        # dataframe['tema_s'] = ta.TEMA(dataframe, timeperiod=8)
+        #
+        dataframe['ema_low'] = ta.TEMA(dataframe["low"], timeperiod=8)
+        dataframe['ema_high'] = ta.TEMA(dataframe["high"], timeperiod=8)
+        # dataframe['ema_l'] = ta.EMA(dataframe, timeperiod=89)
+        #
+        # dataframe['adx'] = ta.ADX(dataframe, period=5)
 
-        dataframe['rsi'] = ta.RSI(dataframe, timeperiod=8)
+        # # Heikin Ashi Strategy
+        heikinashi = qtpylib.heikinashi(dataframe)
+        dataframe['ha_open'] = heikinashi['open']
+        dataframe['ha_close'] = heikinashi['close']
+        dataframe['ha_high'] = heikinashi['high']
+        dataframe['ha_low'] = heikinashi['low']
 
-        dataframe['tema_s'] = ta.TEMA(dataframe, timeperiod=8)
-
-        dataframe['ema_m'] = ta.EMA(dataframe, timeperiod=13)
-        dataframe['ema_l'] = ta.EMA(dataframe, timeperiod=55)
-
-        dataframe['adx'] = ta.ADX(dataframe, period=5)
+        dataframe['ha_green'] = dataframe['ha_open'] < dataframe['ha_close']
+        dataframe['ha_red'] = dataframe['ha_open'] > dataframe['ha_close']
 
         return dataframe
 
@@ -97,9 +126,10 @@ class MyStrategy03_15m(IStrategy):
         if self.buy_signal_1:
             conditions = [
                 dataframe["volume"] > 0,
-                dataframe["adx"] >= dataframe["adx_trendline"],
-                dataframe['ema_l'] >= dataframe['ema_l'].shift(1),
-                qtpylib.crossed_above(dataframe['tema_s'], dataframe['ema_m']),
+                # dataframe["close"] >= dataframe['ha_close'],
+                # dataframe['ha_open'] < dataframe['ha_close']
+                # dataframe["close"] >= dataframe["hh"].shift(1),
+                qtpylib.crossed_above(dataframe['ha_close'], dataframe['ema_high']),
                 # dataframe["close"] > dataframe["ema_m"],
                 # dataframe["low"] < dataframe["s1_ema_xxl"],
                 # dataframe["close"] > dataframe["s1_ema_xxl"],
@@ -108,12 +138,12 @@ class MyStrategy03_15m(IStrategy):
             ]
             dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_1")
 
-        if self.buy_signal_2:
-            conditions = [
-                qtpylib.crossed_above(dataframe["ema_m"], dataframe["ema_l"]),
-                dataframe["volume"] > 0,
-            ]
-            dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_2")
+        # if self.buy_signal_2:
+        #     conditions = [
+        #         qtpylib.crossed_above(dataframe["ema_m"], dataframe["ema_l"]),
+        #         dataframe["volume"] > 0,
+        #     ]
+        #     dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_2")
 
         return dataframe
 
@@ -122,9 +152,9 @@ class MyStrategy03_15m(IStrategy):
         if self.sell_signal_1:
             conditions = [
                 dataframe["volume"] > 0,
-                dataframe["adx"] >= dataframe["adx_trendline"],
-                qtpylib.crossed_below(dataframe['tema_s'], dataframe['ema_m']),
-                dataframe["close"] > dataframe["ema_l"],
+                # dataframe["adx"] >= dataframe["adx_trendline"],
+                qtpylib.crossed_below(dataframe['ha_open'], dataframe['ema_low']),
+                # dataframe["close"] > dataframe["ema_l"],
                 # dataframe["low"] < dataframe["s1_ema_xxl"],
                 # dataframe["close"] >= dataframe["ema_m"],
                 # dataframe["close"] > dataframe["s1_ema_xxl"],
