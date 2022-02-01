@@ -43,7 +43,7 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 30,
+			"number_assets": 50,
 			"sort_key": "quoteVolume",
 			"refresh_period": 800
 		},
@@ -54,9 +54,12 @@
 		{
 			"method": "RangeStabilityFilter",
 			"lookback_days": 5,
-			"min_rate_of_change": 0.1,
+			"min_rate_of_change": 0.4,
 			"max_rate_of_change": 0.95,
 			"refresh_period": 1440
+		},
+		{
+			"method": "ShuffleFilter"
 		}
 	],
 	"api_server": {
