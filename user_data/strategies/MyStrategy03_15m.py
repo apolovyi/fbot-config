@@ -14,7 +14,7 @@ class MyStrategy03_15m(IStrategy):
     # Minimal ROI designed for the strategy.
     # This attribute will be overridden if the config file contains "minimal_roi"
     minimal_roi = {
-        "0": 11.9,
+        "0": 100,
         # "10": 0.379,
         # "20": 0.15,
         # "30": 0
@@ -22,7 +22,7 @@ class MyStrategy03_15m(IStrategy):
 
     # Optimal stoploss designed for the strategy
     # This attribute will be overridden if the config file contains "stoploss"
-    stoploss = -0.05
+    stoploss = -0.3
 
     startup_candle_count: int = 200
 
@@ -30,10 +30,10 @@ class MyStrategy03_15m(IStrategy):
     timeframe = '15m'
 
     # signal controls
-    buy_signal_1 = True
+    buy_signal_1 = False
     buy_signal_2 = True
     buy_signal_3 = True
-    sell_signal_1 = True
+    sell_signal_1 = False
     sell_signal_2 = True
     sell_signal_3 = True
 
@@ -83,12 +83,12 @@ class MyStrategy03_15m(IStrategy):
 
         dataframe['rsi'] = ta.RSI(dataframe, timeperiod=8)
 
-        dataframe['tema_s'] = ta.TEMA(dataframe, timeperiod=5)
+        dataframe['tema_s'] = ta.TEMA(dataframe, timeperiod=8)
 
-        dataframe['ema_m'] = ta.EMA(dataframe, timeperiod=21)
-        dataframe['ema_l'] = ta.EMA(dataframe, timeperiod=89)
+        dataframe['ema_m'] = ta.EMA(dataframe, timeperiod=13)
+        dataframe['ema_l'] = ta.EMA(dataframe, timeperiod=55)
 
-        dataframe['adx'] = ta.ADX(dataframe, period=3)
+        dataframe['adx'] = ta.ADX(dataframe, period=5)
 
         return dataframe
 
@@ -99,7 +99,6 @@ class MyStrategy03_15m(IStrategy):
                 dataframe["volume"] > 0,
                 dataframe["adx"] >= dataframe["adx_trendline"],
                 dataframe['ema_l'] >= dataframe['ema_l'].shift(1),
-                dataframe["rsi"] <= dataframe["rsi_buy_hline"],
                 qtpylib.crossed_above(dataframe['tema_s'], dataframe['ema_m']),
                 # dataframe["close"] > dataframe["ema_m"],
                 # dataframe["low"] < dataframe["s1_ema_xxl"],
@@ -109,13 +108,12 @@ class MyStrategy03_15m(IStrategy):
             ]
             dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_1")
 
-        # if self.buy_signal_2:
-        #     conditions = [
-        #         qtpylib.crossed_above(dataframe["s2_fib_lower_band"], dataframe["s2_bb_lower_band"]),
-        #         dataframe["close"] < dataframe["s2_ema"],
-        #         dataframe["volume"] > 0,
-        #     ]
-        #     dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_2")
+        if self.buy_signal_2:
+            conditions = [
+                qtpylib.crossed_above(dataframe["ema_m"], dataframe["ema_l"]),
+                dataframe["volume"] > 0,
+            ]
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), ["buy", "buy_tag"]] = (1, "buy_signal_2")
 
         return dataframe
 
@@ -125,8 +123,8 @@ class MyStrategy03_15m(IStrategy):
             conditions = [
                 dataframe["volume"] > 0,
                 dataframe["adx"] >= dataframe["adx_trendline"],
-                dataframe["rsi"] >= dataframe["rsi_sell_hline"],
                 qtpylib.crossed_below(dataframe['tema_s'], dataframe['ema_m']),
+                dataframe["close"] > dataframe["ema_l"],
                 # dataframe["low"] < dataframe["s1_ema_xxl"],
                 # dataframe["close"] >= dataframe["ema_m"],
                 # dataframe["close"] > dataframe["s1_ema_xxl"],
@@ -136,12 +134,11 @@ class MyStrategy03_15m(IStrategy):
             ]
             dataframe.loc[reduce(lambda x, y: x & y, conditions), ["sell", "sell_tag"]] = (1, "sell_signal_1")
 
-        # if self.sell_signal_2:
-        #     conditions = [
-        #         qtpylib.crossed_above(dataframe["s2_fib_lower_band"], dataframe["s2_bb_lower_band"]),
-        #         dataframe["close"] < dataframe["s2_ema"],
-        #         dataframe["volume"] > 0,
-        #     ]
-        #     dataframe.loc[reduce(lambda x, y: x & y, conditions), ["sell", "sell_tag"]] = (1, "sell_signal_2")
+        if self.sell_signal_2:
+            conditions = [
+                # qtpylib.crossed_below(dataframe["ema_m"], dataframe["ema_l"]),
+                dataframe["volume"] < 0,
+            ]
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), ["sell", "sell_tag"]] = (1, "sell_signal_2")
 
         return dataframe

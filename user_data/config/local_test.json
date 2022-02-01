@@ -1,0 +1,37 @@
+{
+	"max_open_trades": 20,
+	"stake_currency": "USDT",
+	"stake_amount": "unlimited",
+	"available_capital": 1000,
+	"amend_last_stake_amount": true,
+	"tradable_balance_ratio": 0.99,
+	"fiat_display_currency": "USD",
+	"dry_run": true,
+	"dry_run_wallet": 1000,
+	"cancel_open_orders_on_exit": false,
+	"unfilledtimeout": {
+		"buy": 2,
+		"sell": 3,
+		"unit": "minutes"
+	},
+	"bid_strategy": {
+		"price_side": "bid",
+		"ask_last_balance": 0.1,
+		"use_order_book": true,
+		"order_book_top": 10,
+		"check_depth_of_market": {
+			"enabled": false,
+			"bids_to_ask_delta": 1
+		}
+	},
+	"ask_strategy": {
+		"price_side": "ask",
+		"use_order_book": true,
+		"order_book_top": 10
+	},
+	"api_server": {
+		"listen_port": 8080
+	},
+	"strategy": "MyStrategy03_15m",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_local.sqlite"
+}
