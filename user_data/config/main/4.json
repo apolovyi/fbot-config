@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 15,
+	"max_open_trades": 20,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -10,19 +10,19 @@
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
 	"unfilledtimeout": {
-		"buy": 10,
-		"sell": 20,
+		"buy": 2,
+		"sell": 4,
 		"unit": "minutes"
 	},
 	"bid_strategy": {
 		"price_side": "bid",
 		"use_order_book": true,
-		"order_book_top": 1
+		"order_book_top": 2
 	},
 	"ask_strategy": {
 		"price_side": "ask",
 		"use_order_book": true,
-		"order_book_top": 1
+		"order_book_top": 2
 	},
 	"order_types": {
 		"buy": "limit",
@@ -34,33 +34,22 @@
 		"stoploss_on_exchange": false,
 		"stoploss_on_exchange_interval": 60
 	},
-	"pairlists": [
+	"api_server": {
+		"listen_port": 8089
+	},
+	"protections": [
 		{
-			"method": "VolumePairList",
-			"number_assets": 60,
-			"sort_key": "quoteVolume",
-			"min_value": 0,
-			"refresh_period": 86400
+			"method": "CooldownPeriod",
+			"stop_duration_candles": 2
 		},
 		{
-			"method": "OffsetFilter",
-			"offset": 30
-		},
-		{
-			"method": "AgeFilter",
-			"min_days_listed": 15
-		},
-		{
-			"method": "VolatilityFilter",
-			"lookback_days": 50,
-			"min_volatility": 0.05,
-			"max_volatility": 0.67,
-			"refresh_period": 86400
+			"method": "StoplossGuard",
+			"lookback_period_candles": 6,
+			"trade_limit": 2,
+			"stop_duration_candles": 1440,
+			"only_per_pair": true
 		}
 	],
-	"api_server": {
-		"listen_port": 8084
-	},
 	"strategy": "MyStrategy03",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8084.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8089.sqlite"
 }

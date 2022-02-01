@@ -3,7 +3,7 @@ Description=Freqtrade bot 1
 
 [Service]
 WorkingDirectory=/opt/freqtrade
-ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/1.json
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/1.json --config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
 Restart=always
 RestartSec=10
 Type=notify

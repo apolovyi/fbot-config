@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 10,
+	"max_open_trades": 20,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -9,6 +9,12 @@
 	"dry_run": true,
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
+	"minimal_roi": {
+		"0": 0.577,
+		"10": 0.379,
+		"20": 0.15,
+		"30": 0
+	},
 	"unfilledtimeout": {
 		"buy": 2,
 		"sell": 4,
@@ -34,42 +40,9 @@
 		"stoploss_on_exchange": false,
 		"stoploss_on_exchange_interval": 60
 	},
-	"pairlists": [
-		{
-			"method": "VolumePairList",
-			"number_assets": 50,
-			"sort_key": "quoteVolume",
-			"min_value": 0,
-			"refresh_period": 1800
-		},
-		{
-			"method": "OffsetFilter",
-			"offset": 20
-		},
-		{
-			"method": "AgeFilter",
-			"min_days_listed": 15
-		},
-		{
-			"method": "RangeStabilityFilter",
-			"lookback_days": 3,
-			"min_rate_of_change": 0.1,
-			"refresh_period": 360
-		},
-		{
-			"method": "VolatilityFilter",
-			"lookback_days": 50,
-			"min_volatility": 0.05,
-			"max_volatility": 0.67,
-			"refresh_period": 86400
-		},
-		{
-			"method": "ShuffleFilter"
-		}
-	],
 	"api_server": {
-		"listen_port": 8083
+		"listen_port": 8088
 	},
 	"strategy": "MyStrategy03",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8083.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8088.sqlite"
 }
