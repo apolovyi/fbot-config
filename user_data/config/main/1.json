@@ -49,7 +49,7 @@
 		},
 		{
 			"method": "AgeFilter",
-			"min_days_listed": 500
+			"min_days_listed": 5
 		},
 		{
 			"method": "RangeStabilityFilter",

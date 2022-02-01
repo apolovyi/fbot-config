@@ -20,7 +20,7 @@
 		},
 		{
 			"method": "AgeFilter",
-			"min_days_listed": 20
+			"min_days_listed": 10
 		},
 		{
 			"method": "PerformanceFilter",
