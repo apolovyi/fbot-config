@@ -37,6 +37,19 @@
 	"api_server": {
 		"listen_port": 8089
 	},
+	"protections": [
+		{
+			"method": "CooldownPeriod",
+			"stop_duration_candles": 2
+		},
+		{
+			"method": "StoplossGuard",
+			"lookback_period_candles": 6,
+			"trade_limit": 2,
+			"stop_duration_candles": 1440,
+			"only_per_pair": true
+		}
+	],
 	"strategy": "MyStrategy03",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8089.sqlite"
 }
