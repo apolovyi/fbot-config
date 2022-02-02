@@ -41,8 +41,8 @@
 		"stoploss_on_exchange_interval": 60
 	},
 	"api_server": {
-		"listen_port": 8088
+		"listen_port": 8083
 	},
 	"strategy": "MyStrategy03",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8088.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_3.sqlite"
 }

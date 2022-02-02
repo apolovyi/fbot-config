@@ -35,7 +35,7 @@
 		"stoploss_on_exchange_interval": 60
 	},
 	"api_server": {
-		"listen_port": 8085
+		"listen_port": 8080
 	},
 	"pairlists": [
 		{
@@ -65,5 +65,5 @@
 		}
 	],
 	"strategy": "MyStrategy03",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8085.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_0.sqlite"
 }
