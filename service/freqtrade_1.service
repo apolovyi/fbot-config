@@ -10,6 +10,7 @@ Type=notify
 NotifyAccess=all
 StandardOutput=syslog
 StandardError=syslog
+TimeoutSec=900
 SyslogIdentifier=freqtrade_1
 
 [Install]
