@@ -2,6 +2,7 @@
 	"exchange": {
 		"pair_whitelist": [
 			"BTC/USDT",
+			"ADA/USDT",
 			"ETH/USDT",
 			"AVAX/USDT",
 			"UNI/USDT",

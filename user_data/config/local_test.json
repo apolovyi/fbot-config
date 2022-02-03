@@ -10,13 +10,13 @@
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
 	"unfilledtimeout": {
-		"buy": 2,
-		"sell": 3,
+		"buy": 20,
+		"sell": 30,
 		"unit": "minutes"
 	},
 	"bid_strategy": {
 		"price_side": "bid",
-		"ask_last_balance": 0.1,
+		"ask_last_balance": 0.3,
 		"use_order_book": true,
 		"order_book_top": 10,
 		"check_depth_of_market": {
@@ -27,11 +27,11 @@
 	"ask_strategy": {
 		"price_side": "ask",
 		"use_order_book": true,
-		"order_book_top": 10
+		"order_book_top": 30
 	},
 	"api_server": {
 		"listen_port": 8080
 	},
-	"strategy": "MyStrategy03_15m",
+	"strategy": "Test1",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_local.sqlite"
 }

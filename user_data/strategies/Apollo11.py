@@ -55,47 +55,47 @@ class Apollo11(IStrategy):
 
     s2_fib_lower_value = 4.236
 
-    # @property
-    # def protections(self):
-    #     return [
-    #         {
-    #             # Don't enter a trade right after selling a trade.
-    #             "method": "CooldownPeriod",
-    #             "stop_duration": to_minutes(minutes=0),
-    #         },
-    #         {
-    #             # Stop trading if max-drawdown is reached.
-    #             "method": "MaxDrawdown",
-    #             "lookback_period": to_minutes(hours=12),
-    #             "trade_limit": 20,  # Considering all pairs that have a minimum of 20 trades
-    #             "stop_duration": to_minutes(hours=1),
-    #             "max_allowed_drawdown": 0.2,  # If max-drawdown is > 20% this will activate
-    #         },
-    #         {
-    #             # Stop trading if a certain amount of stoploss occurred within a certain time window.
-    #             "method": "StoplossGuard",
-    #             "lookback_period": to_minutes(hours=6),
-    #             "trade_limit": 4,  # Considering all pairs that have a minimum of 4 trades
-    #             "stop_duration": to_minutes(minutes=30),
-    #             "only_per_pair": False,  # Looks at all pairs
-    #         },
-    #         {
-    #             # Lock pairs with low profits
-    #             "method": "LowProfitPairs",
-    #             "lookback_period": to_minutes(hours=1, minutes=30),
-    #             "trade_limit": 2,  # Considering all pairs that have a minimum of 2 trades
-    #             "stop_duration": to_minutes(hours=15),
-    #             "required_profit": 0.02,  # If profit < 2% this will activate for a pair
-    #         },
-    #         {
-    #             # Lock pairs with low profits
-    #             "method": "LowProfitPairs",
-    #             "lookback_period": to_minutes(hours=6),
-    #             "trade_limit": 4,  # Considering all pairs that have a minimum of 4 trades
-    #             "stop_duration": to_minutes(minutes=30),
-    #             "required_profit": 0.01,  # If profit < 1% this will activate for a pair
-    #         },
-    #     ]
+    @property
+    def protections(self):
+        return [
+            {
+                # Don't enter a trade right after selling a trade.
+                "method": "CooldownPeriod",
+                "stop_duration": to_minutes(minutes=0),
+            },
+            {
+                # Stop trading if max-drawdown is reached.
+                "method": "MaxDrawdown",
+                "lookback_period": to_minutes(hours=12),
+                "trade_limit": 20,  # Considering all pairs that have a minimum of 20 trades
+                "stop_duration": to_minutes(hours=1),
+                "max_allowed_drawdown": 0.2,  # If max-drawdown is > 20% this will activate
+            },
+            {
+                # Stop trading if a certain amount of stoploss occurred within a certain time window.
+                "method": "StoplossGuard",
+                "lookback_period": to_minutes(hours=6),
+                "trade_limit": 4,  # Considering all pairs that have a minimum of 4 trades
+                "stop_duration": to_minutes(minutes=30),
+                "only_per_pair": False,  # Looks at all pairs
+            },
+            {
+                # Lock pairs with low profits
+                "method": "LowProfitPairs",
+                "lookback_period": to_minutes(hours=1, minutes=30),
+                "trade_limit": 2,  # Considering all pairs that have a minimum of 2 trades
+                "stop_duration": to_minutes(hours=15),
+                "required_profit": 0.02,  # If profit < 2% this will activate for a pair
+            },
+            {
+                # Lock pairs with low profits
+                "method": "LowProfitPairs",
+                "lookback_period": to_minutes(hours=6),
+                "trade_limit": 4,  # Considering all pairs that have a minimum of 4 trades
+                "stop_duration": to_minutes(minutes=30),
+                "required_profit": 0.01,  # If profit < 1% this will activate for a pair
+            },
+        ]
 
     plot_config = {
         'main_plot': {
@@ -195,6 +195,8 @@ class Apollo11(IStrategy):
             self, pair: str, trade: Trade, current_time: datetime, current_rate: float, current_profit: float, **kwargs
     ) -> float:
 
+        if current_profit > 0.4:
+            return 0.06
         if current_profit > 0.2:
             return 0.04
         if current_profit > 0.1:
@@ -202,7 +204,7 @@ class Apollo11(IStrategy):
         if current_profit > 0.06:
             return 0.02
         if current_profit > 0.03:
-            return 0.01
+            return 0.025
 
         # Let's try to minimize the loss
         if current_profit <= -0.10:
