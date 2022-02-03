@@ -25,5 +25,6 @@ services:
       trade
       --logfile /opt/freqtrade/user_data/logs/freqtrade.log
       --config /opt/freqtrade/user_data/config/exchange.json
-      --config /opt/freqtrade/user_data/config/main/2.json
+      --config /opt/freqtrade/user_data/config/main/3.json 
+      --config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json
       --config /opt/freqtrade/user_data/config/docker.json
