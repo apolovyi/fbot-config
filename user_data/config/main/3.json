@@ -37,14 +37,14 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 50,
+			"number_assets": 200,
 			"sort_key": "quoteVolume",
 			"min_value": 0,
 			"refresh_period": 1800
 		},
 		{
 			"method": "OffsetFilter",
-			"offset": 20
+			"offset": 60
 		},
 		{
 			"method": "AgeFilter",
