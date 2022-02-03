@@ -55,7 +55,7 @@ sell_params = {
 }
 
 
-class Test1(IStrategy):
+class Strategy01(IStrategy):
     INTERFACE_VERSION = 2
 
     # ROI table:
