@@ -134,8 +134,8 @@ class Strategy01(IStrategy):
     timeframe_minutes = timeframe_to_minutes(timeframe)
 
     timeperiods = [
-        # 50 // timeframe_minutes,
-        # 85 // timeframe_minutes,
+        50 // timeframe_minutes,
+        85 // timeframe_minutes,
         180 // timeframe_minutes,
         360 // timeframe_minutes,
         420 // timeframe_minutes,
@@ -318,14 +318,14 @@ class Strategy01(IStrategy):
 
         # RSI
         dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
-        dataframe['rsi_36'] = ta.RSI(dataframe, timeperiod=36)
-        dataframe['rsi_84'] = ta.RSI(dataframe, timeperiod=84)
+        # dataframe['rsi_36'] = ta.RSI(dataframe, timeperiod=36)
+        # dataframe['rsi_84'] = ta.RSI(dataframe, timeperiod=84)
         dataframe['rsi_fast'] = ta.RSI(dataframe, timeperiod=4)
         dataframe['rsi_slow'] = ta.RSI(dataframe, timeperiod=20)
         dataframe['ema_fast'] = ta.EMA(dataframe, timeperiod=45 // self.timeframe_minutes)
         dataframe['ema_slow'] = ta.EMA(dataframe, timeperiod=60 // self.timeframe_minutes)
         dataframe['uptrend'] = (dataframe['ema_fast'] > dataframe['ema_slow']).astype('int')
-        # dataframe['trendline'] = dataframe['linangle_72'] / dataframe['linangle_72'].shift(12)
+        dataframe['trendline'] = dataframe['linangle_72'] / dataframe['linangle_72'].shift(12)
 
         # Heikin Ashi Candles
         heikinashi = qtpylib.heikinashi(dataframe)
@@ -381,7 +381,7 @@ class Strategy01(IStrategy):
             )
         )
 
-        # dont_buy_conditions.append((dataframe['trendline'] < 0.995))
+        dont_buy_conditions.append((dataframe['trendline'] < 0.995))
         dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
 
         dataframe.loc[
