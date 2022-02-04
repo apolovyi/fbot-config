@@ -29,6 +29,6 @@
 	"api_server": {
 		"listen_port": 8080
 	},
-	"strategy": "NostalgiaForInfinityX",
+	"strategy": "Strategy01",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
 }
