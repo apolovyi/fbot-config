@@ -1,18 +1,13 @@
-from logging import FATAL
 from freqtrade.strategy.interface import IStrategy
-from typing import Dict, List
 from functools import reduce
 from pandas import DataFrame, Series
 import talib.abstract as ta
 import numpy as np
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-import datetime
-from technical.util import resample_to_interval, resampled_merge
-from datetime import datetime, timedelta
+from datetime import datetime
 from freqtrade.persistence import Trade
 from freqtrade.strategy import stoploss_from_open, merge_informative_pair, DecimalParameter, IntParameter, CategoricalParameter
 from freqtrade.exchange import timeframe_to_minutes
-import technical.indicators as ftt
 from technical.indicators import zema
 
 # Buy hyperspace params:
@@ -381,8 +376,11 @@ class Strategy01(IStrategy):
             )
         )
 
-        dont_buy_conditions.append((dataframe['trendline'] < 0.995))
-        dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
+        dont_buy_conditions.append((dataframe['trendline'] < 0.895))
+        dont_buy_conditions.append((dataframe['relative_price'] > 0.71))
+
+        # dont_buy_conditions.append((dataframe['trendline'] < 0.995))
+        # dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
 
         dataframe.loc[
             (

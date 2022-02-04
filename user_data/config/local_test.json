@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 20,
+	"max_open_trades": 10,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -10,24 +10,29 @@
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
 	"unfilledtimeout": {
-		"buy": 20,
-		"sell": 30,
+		"buy": 2,
+		"sell": 3,
 		"unit": "minutes"
 	},
 	"bid_strategy": {
 		"price_side": "bid",
-		"ask_last_balance": 0.3,
 		"use_order_book": true,
-		"order_book_top": 10,
-		"check_depth_of_market": {
-			"enabled": false,
-			"bids_to_ask_delta": 1
-		}
+		"order_book_top": 1
 	},
 	"ask_strategy": {
 		"price_side": "ask",
 		"use_order_book": true,
-		"order_book_top": 30
+		"order_book_top": 1
+	},
+	"order_types": {
+		"buy": "limit",
+		"sell": "limit",
+		"emergencysell": "market",
+		"forcebuy": "market",
+		"forcesell": "market",
+		"stoploss": "market",
+		"stoploss_on_exchange": false,
+		"stoploss_on_exchange_interval": 60
 	},
 	"api_server": {
 		"listen_port": 8080

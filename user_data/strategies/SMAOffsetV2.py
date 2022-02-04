@@ -20,7 +20,7 @@ class SMAOffsetV2(IStrategy):
     }
 
     stoploss = -0.20
-    timeframe = '30m'
+    timeframe = '5m'
     informative_timeframe = '1h'
     use_sell_signal = True
     sell_profit_only = False
@@ -28,15 +28,6 @@ class SMAOffsetV2(IStrategy):
 
     use_custom_stoploss = True
     startup_candle_count = 200
-
-    plot_config = {
-        'main_plot': {
-            'sma_30_offset': {'color': 'orange'},
-            'sma_30_offset_pos': {'color': 'yellow'},
-            'ema_fast': {'color': 'blue'},
-            'ema_slow': {'color': 'green'},
-        },
-    }
 
     def custom_stoploss(self, pair: str, trade: 'Trade', current_time: datetime,
                         current_rate: float, current_profit: float, **kwargs) -> float:
@@ -118,3 +109,12 @@ class SMAOffsetV2(IStrategy):
             ),
             'sell'] = 1
         return dataframe
+
+    plot_config = {
+        'main_plot': {
+            'sma_30_offset': {'color': 'orange'},
+            'sma_30_offset_pos': {'color': 'orange'},
+            'ema_fast': {'color': 'blue'},
+            'ema_slow': {'color': 'green'},
+        },
+    }
