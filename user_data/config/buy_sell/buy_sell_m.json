@@ -1,0 +1,25 @@
+{
+	"unfilledtimeout": {
+		"buy": 2,
+		"sell": 3,
+		"unit": "minutes"
+	},
+	"bid_strategy": {
+		"price_side": "bid",
+		"ask_last_balance": 0.6
+	},
+	"ask_strategy": {
+		"price_side": "ask",
+		"bid_last_balance": 0.6
+	},
+	"order_types": {
+		"buy": "limit",
+		"sell": "limit",
+		"emergencysell": "market",
+		"forcebuy": "market",
+		"forcesell": "limit",
+		"stoploss": "limit",
+		"stoploss_on_exchange": false,
+		"stoploss_on_exchange_interval": 60
+	}
+}

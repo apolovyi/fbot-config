@@ -1,7 +1,6 @@
 {
 	"exchange": {
 		"pair_whitelist": [
-			"BTC/USDT",
 			"ADA/USDT",
 			"ETH/USDT",
 			"AVAX/USDT",
@@ -15,8 +14,6 @@
 			"XLM/USDT",
 			"FTM/USDT",
 			"ONE/USDT"
-		],
-		"pair_blacklist": [
 		]
 	},
 	"pairlists": [

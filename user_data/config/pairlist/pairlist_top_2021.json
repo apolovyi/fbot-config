@@ -49,8 +49,6 @@
 			"LUNA/USDT",
 			"REN/USDT",
 			"NEAR/USDT"
-		],
-		"pair_blacklist": [
 		]
 	},
 	"pairlists": [

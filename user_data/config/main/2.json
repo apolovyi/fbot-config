@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 30,
+	"max_open_trades": 10,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 1000,
@@ -9,59 +9,27 @@
 	"dry_run": true,
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
-	"minimal_roi": {
-		"0": 0.577,
-		"10": 0.379,
-		"20": 0.15,
-		"30": 0
-	},
-	"unfilledtimeout": {
-		"buy": 2,
-		"sell": 4,
-		"unit": "minutes"
-	},
-	"bid_strategy": {
-		"price_side": "bid",
-		"use_order_book": true,
-		"order_book_top": 2
-	},
-	"ask_strategy": {
-		"price_side": "ask",
-		"use_order_book": true,
-		"order_book_top": 2
-	},
-	"order_types": {
-		"buy": "limit",
-		"sell": "limit",
-		"emergencysell": "market",
-		"forcebuy": "market",
-		"forcesell": "market",
-		"stoploss": "market",
-		"stoploss_on_exchange": false,
-		"stoploss_on_exchange_interval": 60
-	},
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 300,
+			"number_assets": 25,
 			"sort_key": "quoteVolume",
-			"refresh_period": 1800
-		},
-		{
-			"method": "AgeFilter",
-			"min_days_listed": 30
+			"refresh_period": 432000
 		},
 		{
 			"method": "RangeStabilityFilter",
-			"lookback_days": 1,
-			"min_rate_of_change": 0.15,
-			"max_rate_of_change": 0.85,
-			"refresh_period": 1440
+			"lookback_days": 2,
+			"min_rate_of_change": 0.09,
+			"max_rate_of_change": 0.90,
+			"refresh_period": 432000
+		},
+		{
+			"method": "ShuffleFilter"
 		}
 	],
 	"api_server": {
 		"listen_port": 8082
 	},
-	"strategy": "MyStrategy03",
+	"strategy": "NostalgiaForInfinityX",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8082.sqlite"
 }
