@@ -9,27 +9,9 @@
 	"dry_run": true,
 	"dry_run_wallet": 1000,
 	"cancel_open_orders_on_exit": false,
-	"pairlists": [
-		{
-			"method": "VolumePairList",
-			"number_assets": 25,
-			"sort_key": "quoteVolume",
-			"refresh_period": 432000
-		},
-		{
-			"method": "RangeStabilityFilter",
-			"lookback_days": 2,
-			"min_rate_of_change": 0.09,
-			"max_rate_of_change": 0.90,
-			"refresh_period": 432000
-		},
-		{
-			"method": "ShuffleFilter"
-		}
-	],
 	"api_server": {
 		"listen_port": 8082
 	},
-	"strategy": "MultiMA_TSL3",
+	"strategy": "NostalgiaForInfinityX",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8082.sqlite"
 }

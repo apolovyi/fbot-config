@@ -3,7 +3,7 @@ Description=Freqtrade bot 3
 
 [Service]
 WorkingDirectory=/opt/freqtrade
-ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/3.json --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_10.json --config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/3.json --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_10.json --config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json
 Restart=always
 RestartSec=10
 Type=notify

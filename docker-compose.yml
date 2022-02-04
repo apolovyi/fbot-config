@@ -34,3 +34,4 @@ services:
 #--config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json
 #--config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
 #--config /opt/freqtrade/user_data/config/pairlist/pairlist.json
+#--config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
