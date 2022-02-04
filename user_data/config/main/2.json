@@ -12,6 +12,6 @@
 	"api_server": {
 		"listen_port": 8082
 	},
-	"strategy": "MultiMA_TSL3",
+	"strategy": "Strategy01",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8082.sqlite"
 }
