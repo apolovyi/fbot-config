@@ -1,15 +1,16 @@
 [Unit]
 Description=Exchange proxy
+After=network.target
 
 [Service]
+Type=simple
 WorkingDirectory=/opt/exchange-proxy
 ExecStart=/opt/exchange-proxy/dist/exchange-proxy -bindaddr "127.0.0.1" -port 8001 -verbose 0 -cache-size 3000 -ttl-cache-timeout 5m0s
 Restart=always
-RestartSec=5
-Type=notify
-NotifyAccess=all
+RestartSec=10
 StandardOutput=syslog
 StandardError=syslog
-TimeoutSec=900
-TimeoutStartSec=900
 SyslogIdentifier=exchange_proxy
+
+[Install]
+WantedBy=multi-user.target
