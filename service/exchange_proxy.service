@@ -3,7 +3,7 @@ Description=Exchange proxy
 
 [Service]
 WorkingDirectory=/opt/exchange-proxy
-ExecStart=/opt/exchange-proxy/dist/exchange-proxy -port 8001 -verbose 0
+ExecStart=/opt/exchange-proxy/dist/exchange-proxy -port 8001 -verbose 0 -bindaddr 127.0.0.1 -cache-size 3000 -ttl-cache-timeout 5m0s
 Restart=always
 RestartSec=10
 Type=notify
