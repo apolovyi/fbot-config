@@ -1,5 +1,5 @@
 {
-	"max_open_trades": 10,
+	"max_open_trades": 4,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
 	"available_capital": 600,
@@ -12,6 +12,6 @@
 	"api_server": {
 		"listen_port": 8081
 	},
-	"strategy": "Strategy01",
+	"strategy": "NostalgiaForInfinityX",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8081.sqlite"
 }
