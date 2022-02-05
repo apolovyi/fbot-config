@@ -3,4 +3,4 @@ cp -r user_data/* /opt/freqtrade/user_data
 mkdir -p /opt/freqtrade/user_data/db
 rm -rf /opt/freqtrade/user_data/db/*
 sudo systemctl daemon-reload
-#sudo chown admin:admin -R /opt
+sudo chown admin:admin -R /opt
