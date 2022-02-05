@@ -1,6 +1,6 @@
 [Unit]
 Description=Freqtrade bot 4
-After=exchange_proxy
+After=exchange_proxy.service
 
 [Service]
 WorkingDirectory=/opt/freqtrade
