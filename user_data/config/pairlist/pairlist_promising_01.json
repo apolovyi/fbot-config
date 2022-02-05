@@ -1,6 +1,11 @@
 {
 	"exchange": {
 		"pair_whitelist": [
+			"ATOM/USDT",
+			"SAND/USDT",
+			"LINK/USDT",
+			"XMR/USDT",
+			"AAVE/USDT",
 			"ADA/USDT",
 			"ETH/USDT",
 			"AVAX/USDT",
