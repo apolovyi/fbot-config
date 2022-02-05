@@ -313,8 +313,6 @@ class Strategy01(IStrategy):
 
         # RSI
         dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
-        # dataframe['rsi_36'] = ta.RSI(dataframe, timeperiod=36)
-        # dataframe['rsi_84'] = ta.RSI(dataframe, timeperiod=84)
         dataframe['rsi_fast'] = ta.RSI(dataframe, timeperiod=4)
         dataframe['rsi_slow'] = ta.RSI(dataframe, timeperiod=20)
         dataframe['ema_fast'] = ta.EMA(dataframe, timeperiod=45 // self.timeframe_minutes)
@@ -376,11 +374,11 @@ class Strategy01(IStrategy):
             )
         )
 
-        dont_buy_conditions.append((dataframe['trendline'] < 0.895))
-        dont_buy_conditions.append((dataframe['relative_price'] > 0.71))
+        # dont_buy_conditions.append((dataframe['trendline'] < 0.895))
+        # dont_buy_conditions.append((dataframe['relative_price'] > 0.71))
 
-        # dont_buy_conditions.append((dataframe['trendline'] < 0.995))
-        # dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
+        dont_buy_conditions.append((dataframe['trendline'] < 0.995))
+        dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
 
         dataframe.loc[
             (
