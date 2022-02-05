@@ -1,0 +1,37 @@
+{
+	"exchange": {
+		"name": "kraken",
+		"key": "FREQBOT_KU_KEY",
+		"secret": "FREQBOT_KU_SECRET",
+		"password": "FREQBOT_KU_PASSWORD",
+		"ccxt_config": {
+			"enableRateLimit": true
+		},
+		"ccxt_async_config": {
+			"enableRateLimit": true,
+			"rateLimit": 500
+		}
+	},
+	"api_server": {
+		"enabled": true,
+		"listen_ip_address": "127.0.0.1",
+		"listen_port": 8080,
+		"verbosity": "error",
+		"enable_openapi": false,
+		"jwt_secret_key": "FREQBOT_JWT_SECRET",
+		"CORS_origins": [
+			"*"
+		],
+		"username": "FREQBOT_USERNAME",
+		"password": "FREQBOT_PASSWORD"
+	},
+	"user_data_dir": "/opt/freqtrade/user_data/",
+	"strategy_path": "/opt/freqtrade/user_data/strategies",
+	"initial_state": "running",
+	"forcebuy_enable": false,
+	"internals": {
+		"process_throttle_secs": 5,
+		"heartbeat_interval": 60,
+		"sd_notify": true
+	}
+}

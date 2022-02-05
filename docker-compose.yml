@@ -18,20 +18,30 @@ services:
     # Expose api on port 8080 (localhost only)
     # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
     # before enabling this.
-    ports:
-      - "127.0.0.1:8080:8080"
+    #    ports:
+    #      - "127.0.0.1:8080:8082"
+    #      - "127.0.0.1:10080:10080"
+    #      - "0.0.0.0:10080:10080"
+    #      - "10080:10080"
     # Default command used when running `docker compose up`
     command: >
       trade
       --logfile /opt/freqtrade/user_data/logs/freqtrade.log
-      --config /opt/freqtrade/user_data/config/exchange.json
-      --config /opt/freqtrade/user_data/config/main/3.json 
+      --config /opt/freqtrade/user_data/config/exchange_proxy.json
+      --config /opt/freqtrade/user_data/config/main/0.json 
       --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_10.json
       --config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
-      --config /opt/freqtrade/user_data/config/docker.json
+  #      --config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
+  #      --config /opt/freqtrade/user_data/config/docker.json
 
-#--config /opt/freqtrade/user_data/config/buy_sell/buy_sell_m.json
-#--config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json
-#--config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
-#--config /opt/freqtrade/user_data/config/pairlist/pairlist.json
-#--config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
+  #--config /opt/freqtrade/user_data/config/buy_sell/buy_sell_m.json
+  #--config /opt/freqtrade/user_data/config/pairlist/pairlist_promising_01.json
+  #--config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
+  #--config /opt/freqtrade/user_data/config/pairlist/pairlist.json
+  #--config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
+
+  exchange-proxy:
+    image: mikekonan/exchange-proxy:latest-arm64
+    restart: unless-stopped
+    command: -port 8001 -verbose 0
+    container_name: exchange-proxy

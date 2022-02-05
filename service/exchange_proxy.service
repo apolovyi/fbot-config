@@ -1,0 +1,18 @@
+[Unit]
+Description=Exchange proxy
+
+[Service]
+WorkingDirectory=/opt/exchange-proxy
+ExecStart=/opt/exchange-proxy/dist/exchange-proxy -port 8001 -verbose 0
+Restart=always
+RestartSec=10
+Type=notify
+NotifyAccess=all
+StandardOutput=syslog
+StandardError=syslog
+TimeoutSec=900
+TimeoutStartSec=900
+SyslogIdentifier=exchange_proxy
+
+[Install]
+WantedBy=multi-user.target
