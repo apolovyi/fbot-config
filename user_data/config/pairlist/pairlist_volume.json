@@ -1,0 +1,31 @@
+{
+	"exchange": {
+		"pair_whitelist": [
+		],
+		"pair_blacklist": [
+		]
+	},
+	"pairlists": [
+		{
+			"method": "VolumePairList",
+			"number_assets": 280,
+			"sort_key": "quoteVolume",
+			"refresh_period": 86400
+		},
+		{
+			"method": "OffsetFilter",
+			"offset": 40
+		},
+		{
+			"method": "AgeFilter",
+			"min_days_listed": 20
+		},
+		{
+			"method": "VolatilityFilter",
+			"lookback_days": 10,
+			"min_volatility": 0.12,
+			"max_volatility": 0.95,
+			"refresh_period": 86400
+		}
+	]
+}

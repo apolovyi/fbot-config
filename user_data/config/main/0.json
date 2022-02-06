@@ -6,12 +6,35 @@
 	"amend_last_stake_amount": true,
 	"tradable_balance_ratio": 0.99,
 	"fiat_display_currency": "USD",
-	"dry_run": false,
+	"dry_run": true,
 	"dry_run_wallet": 600,
 	"cancel_open_orders_on_exit": false,
 	"api_server": {
 		"listen_port": 8080
 	},
+	"pairlists": [
+		{
+			"method": "VolumePairList",
+			"number_assets": 280,
+			"sort_key": "quoteVolume",
+			"refresh_period": 86400
+		},
+		{
+			"method": "OffsetFilter",
+			"offset": 40
+		},
+		{
+			"method": "AgeFilter",
+			"min_days_listed": 20
+		},
+		{
+			"method": "VolatilityFilter",
+			"lookback_days": 10,
+			"min_volatility": 0.12,
+			"max_volatility": 0.95,
+			"refresh_period": 86400
+		}
+	]
 	"strategy": "Strategy01",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
 }
