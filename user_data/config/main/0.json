@@ -34,7 +34,7 @@
 			"max_volatility": 0.95,
 			"refresh_period": 86400
 		}
-	]
+	],
 	"strategy": "Strategy01",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
 }
