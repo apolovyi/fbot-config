@@ -1,0 +1,19 @@
+[Unit]
+Description=Freqtrade bot 1
+After=exchange_proxy.service
+
+[Service]
+WorkingDirectory=/opt/freqtrade
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange_proxy.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/1.json --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_m.json --config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
+Restart=always
+RestartSec=10
+Type=notify
+NotifyAccess=all
+StandardOutput=syslog
+StandardError=syslog
+TimeoutSec=900
+TimeoutStartSec=900
+SyslogIdentifier=freqtrade_1
+
+[Install]
+WantedBy=multi-user.target

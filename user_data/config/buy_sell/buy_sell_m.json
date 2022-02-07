@@ -5,16 +5,14 @@
 		"unit": "minutes"
 	},
 	"bid_strategy": {
-		"price_side": "bid",
-		"ask_last_balance": 0.6
+		"price_side": "ask"
 	},
 	"ask_strategy": {
-		"price_side": "ask",
-		"bid_last_balance": 0.6
+		"price_side": "bid"
 	},
 	"order_types": {
-		"buy": "limit",
-		"sell": "limit",
+		"buy": "market",
+		"sell": "market",
 		"emergencysell": "market",
 		"forcebuy": "market",
 		"forcesell": "limit",

@@ -9,7 +9,7 @@
 	"dry_run": false,
 	"cancel_open_orders_on_exit": false,
 	"api_server": {
-		"listen_port": 8080
+		"listen_port": 8081
 	},
 	"pairlists": [
 		{
@@ -30,6 +30,6 @@
 			"refresh_period": 86400
 		}
 	],
-	"strategy": "Strategy01",
+	"strategy": "Strategy01_v1",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
 }

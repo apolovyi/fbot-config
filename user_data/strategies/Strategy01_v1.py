@@ -50,7 +50,7 @@ sell_params = {
 }
 
 
-class Strategy01(IStrategy):
+class Strategy01_v1(IStrategy):
     INTERFACE_VERSION = 2
 
     # ROI table:
@@ -374,11 +374,11 @@ class Strategy01(IStrategy):
             )
         )
 
-        dont_buy_conditions.append((dataframe['trendline'] < 0.895))
-        dont_buy_conditions.append((dataframe['relative_price'] > 0.71))
+        # dont_buy_conditions.append((dataframe['trendline'] < 0.895))
+        # dont_buy_conditions.append((dataframe['relative_price'] > 0.71))
 
-        # dont_buy_conditions.append((dataframe['trendline'] < 0.995))
-        # dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
+        dont_buy_conditions.append((dataframe['trendline'] < 0.990))
+        dont_buy_conditions.append((dataframe['relative_price'] > 0.51))
 
         dataframe.loc[
             (
