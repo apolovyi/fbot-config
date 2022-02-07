@@ -31,5 +31,5 @@
 		}
 	],
 	"strategy": "Strategy01_v1",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8081.sqlite"
 }
