@@ -5,7 +5,7 @@
 	"available_capital": 300,
 	"amend_last_stake_amount": true,
 	"tradable_balance_ratio": 0.99,
-	"fiat_display_currency": "USD",
+	"fiat_display_currency": "EUR",
 	"dry_run": false,
 	"cancel_open_orders_on_exit": false,
 	"api_server": {
