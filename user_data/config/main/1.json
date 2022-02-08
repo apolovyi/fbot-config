@@ -20,10 +20,6 @@
 			"refresh_period": 129600
 		},
 		{
-			"method": "AgeFilter",
-			"min_days_listed": 10
-		},
-		{
 			"method": "OffsetFilter",
 			"offset": 100
 		},
