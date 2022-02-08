@@ -29,9 +29,9 @@ services:
       trade
       --logfile /opt/freqtrade/user_data/logs/freqtrade.log
       --config /opt/freqtrade/user_data/config/exchange_proxy.json
-      --config /opt/freqtrade/user_data/config/main/1.json 
-      --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_m.json
-      --config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
+      --config /opt/freqtrade/user_data/config/main/0.json 
+      --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_1.json
+      --config /opt/freqtrade/user_data/config/pairlist/exclude_shit_v3.json
       --config /opt/freqtrade/user_data/config/docker.json
   #      --config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
 
@@ -40,9 +40,9 @@ services:
   #--config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
   #--config /opt/freqtrade/user_data/config/pairlist/pairlist.json
   #--config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
-#
-#  exchange-proxy:
-#    image: mikekonan/exchange-proxy:latest-arm64
-#    restart: unless-stopped
-#    command: -port 8001 -verbose 0 -kucoin-topics-per-ws 150 -cache-size 3000 -ttl-cache-timeout 5m0s
-#    container_name: exchange-proxy
+  #
+  exchange-proxy:
+    image: mikekonan/exchange-proxy:latest-arm64
+    restart: unless-stopped
+    command: -port 8001 -verbose 0 -kucoin-topics-per-ws 150 -cache-size 1000 -ttl-cache-timeout 5m0s
+    container_name: exchange-proxy

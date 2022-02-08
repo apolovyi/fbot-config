@@ -1,0 +1,12 @@
+{
+	"exchange": {
+		"pair_blacklist": [
+			".*(1L|1S|2L|2S|3L|3S|4|4L|4S|5|5L|5S|6|6L|6S).*\/.*",
+			".*(BEAR|BULL|UP|DOWN|HALF|HEDGE|PERP|PREMIUM).*\/.*",
+			".*(2021|2022).*\/.*",
+			"(AUD|EUR|GBP|CHF|CAD|JPY)\/.*",
+			"(BUSD|USDT|TUSD|USDJ|USDC|CUSDT|DAI|USDN)\/.*",
+			"(BTC|ETX|SHIB|DOGE|NAVI)\/.*"
+		]
+	}
+}

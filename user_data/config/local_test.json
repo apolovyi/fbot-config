@@ -15,8 +15,7 @@
 		"secret": "FREQBOT_KU_SECRET",
 		"password": "FREQBOT_KU_PASSWORD",
 		"ccxt_config": {
-			"enableRateLimit": false,
-			"timeout": 60000,
+			"enableRateLimit": true,
 			"urls": {
 				"api": {
 					"public": "http://exchange-proxy:8001/kucoin",
@@ -25,8 +24,8 @@
 			}
 		},
 		"ccxt_async_config": {
-			"enableRateLimit": false,
-			"timeout": 60000
+			"enableRateLimit": true,
+			"rateLimit": 400
 		}
 	},
 	"unfilledtimeout": {

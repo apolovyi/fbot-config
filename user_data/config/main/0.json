@@ -14,22 +14,19 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 100,
+			"number_assets": 80,
 			"sort_key": "quoteVolume",
 			"min_value": 0,
-			"refresh_period": 129600
+			"refresh_period": 14400
 		},
 		{
 			"method": "VolatilityFilter",
 			"lookback_days": 3,
-			"min_volatility": 0.02,
+			"min_volatility": 0.015,
 			"max_volatility": 0.95,
-			"refresh_period": 129600
-		},
-		{
-			"method": "ShuffleFilter"
+			"refresh_period": 43200
 		}
 	],
-	"strategy": "Strategy01_v4",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080.sqlite"
+	"strategy": "Strategy01",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8080_0.sqlite"
 }
