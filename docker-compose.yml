@@ -15,7 +15,7 @@ services:
     container_name: freqtrade
     volumes:
       - "./user_data:/opt/freqtrade/user_data"
-    #      - "/Users/apolovyi/Documents/dev-projects/fregtrade/exchange-data:/opt/freqtrade/user_data/kucoin-data"
+      - "/Users/apolovyi/Documents/dev-projects/fregtrade/exchange-data/kucoin:/opt/freqtrade/user_data/data/kucoin-data"
     # Expose api on port 8080 (localhost only)
     # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
     # before enabling this.
