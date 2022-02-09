@@ -1,13 +1,12 @@
 {
-	"max_open_trades": 10,
+	"max_open_trades": 3,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
-	"available_capital": 1000,
 	"amend_last_stake_amount": true,
 	"tradable_balance_ratio": 0.99,
 	"fiat_display_currency": "USD",
 	"dry_run": true,
-	"dry_run_wallet": 1000,
+	"dry_run_wallet": 600,
 	"cancel_open_orders_on_exit": false,
 	"exchange": {
 		"name": "kucoin",
@@ -15,17 +14,12 @@
 		"secret": "FREQBOT_KU_SECRET",
 		"password": "FREQBOT_KU_PASSWORD",
 		"ccxt_config": {
-			"enableRateLimit": true,
-			"urls": {
-				"api": {
-					"public": "http://exchange-proxy:8001/kucoin",
-					"private": "http://exchange-proxy:8001/kucoin"
-				}
-			}
+			"enableRateLimit": false,
+			"timeout": 60000
 		},
 		"ccxt_async_config": {
-			"enableRateLimit": true,
-			"rateLimit": 400
+			"enableRateLimit": false,
+			"timeout": 60000
 		}
 	},
 	"unfilledtimeout": {

@@ -1,7 +1,7 @@
 {
 	"exchange": {
 		"pair_blacklist": [
-			"BNB/.*",
+			"USDJ/.*",
 			"USDC/.*",
 			".*BEAR/.*",
 			".*BULL/.*",
