@@ -14,7 +14,7 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 110,
+			"number_assets": 120,
 			"sort_key": "quoteVolume",
 			"min_value": 0,
 			"refresh_period": 86400
