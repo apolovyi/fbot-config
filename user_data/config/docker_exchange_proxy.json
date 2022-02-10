@@ -1,0 +1,34 @@
+{
+	"dry_run": true,
+	"api_server": {
+		"enabled": true,
+		"listen_ip_address": "0.0.0.0",
+		"listen_port": 8080,
+		"verbosity": "error",
+		"enable_openapi": false,
+		"jwt_secret_key": "super-secret",
+		"CORS_origins": [
+			"*"
+		],
+		"username": "fbot",
+		"password": "fbot"
+	},
+	"exchange": {
+		"name": "kucoin",
+		"key": "FREQBOT_KU_KEY",
+		"secret": "FREQBOT_KU_SECRET",
+		"password": "FREQBOT_KU_PASSWORD",
+		"ccxt_config": {
+			"enableRateLimit": false,
+			"urls": {
+				"api": {
+					"public": "http://host.docker.internal:8001/kucoin",
+					"private": "http://host.docker.internal:8001/kucoin"
+				}
+			}
+		},
+		"ccxt_async_config": {
+			"enableRateLimit": false
+		}
+	}
+}
