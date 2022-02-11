@@ -2,25 +2,25 @@
 	"max_open_trades": 3,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
-	"available_capital": 300,
+	"available_capital": 200,
 	"amend_last_stake_amount": true,
 	"tradable_balance_ratio": 0.99,
 	"fiat_display_currency": "EUR",
 	"dry_run": false,
 	"cancel_open_orders_on_exit": false,
 	"api_server": {
-		"listen_port": 8081
+		"listen_port": 8083
 	},
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 130,
+			"number_assets": 90,
 			"sort_key": "quoteVolume",
 			"refresh_period": 14400
 		},
 		{
 			"method": "OffsetFilter",
-			"offset": 70
+			"offset": 20
 		},
 		{
 			"method": "AgeFilter",
@@ -34,6 +34,6 @@
 			"refresh_period": 14400
 		}
 	],
-	"strategy": "Strategy01_v4",
-	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8081.sqlite"
+	"strategy": "BB_RPB_TSL_V1",
+	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8083.sqlite"
 }
