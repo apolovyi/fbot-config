@@ -15,7 +15,7 @@ services:
     container_name: freqtrade
     volumes:
       - "./user_data:/opt/freqtrade/user_data"
-    #      - "/Users/apolovyi/Documents/dev-projects/fregtrade/exchange-data:/opt/freqtrade/user_data/kucoin-data"
+      - "/Users/apolovyi/Documents/dev-projects/fregtrade/exchange-data/kucoin:/opt/freqtrade/user_data/data"
     # Expose api on port 8080 (localhost only)
     # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
     # before enabling this.
@@ -40,9 +40,9 @@ services:
   #--config /opt/freqtrade/user_data/config/pairlist/exclude_shit.json
   #--config /opt/freqtrade/user_data/config/pairlist/pairlist.json
   #--config /opt/freqtrade/user_data/config/pairlist/pairlist_top_2021.json
-#
-#  exchange-proxy:
-#    image: mikekonan/exchange-proxy:latest-arm64
-#    restart: unless-stopped
-#    command: -port 8001 -verbose 0 -kucoin-topics-per-ws 150 -cache-size 3000 -ttl-cache-timeout 5m0s
-#    container_name: exchange-proxy
+  #
+  exchange-proxy:
+    image: mikekonan/exchange-proxy:latest-arm64
+    restart: unless-stopped
+    command: -port 8001 -verbose 0 -kucoin-topics-per-ws 150 -cache-size 3000 -ttl-cache-timeout 5m0s
+    container_name: exchange-proxy

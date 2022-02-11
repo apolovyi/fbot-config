@@ -50,6 +50,6 @@
 	"api_server": {
 		"listen_port": 8080
 	},
-	"strategy": "Strategy01",
+	"strategy": "BB_RPB_TSL_V1",
 	"db_url": "sqlite:////opt/freqtrade/user_data/db/bot_local.sqlite"
 }
