@@ -21,8 +21,8 @@
 		},
 		{
 			"method": "VolatilityFilter",
-			"lookback_days": 3,
-			"min_volatility": 0.015,
+			"lookback_days": 1,
+			"min_volatility": 0.06,
 			"max_volatility": 0.95,
 			"refresh_period": 14400
 		},
