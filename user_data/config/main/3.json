@@ -19,13 +19,9 @@
 			"refresh_period": 14400
 		},
 		{
-			"method": "OffsetFilter",
-			"offset": 10
-		},
-		{
 			"method": "VolatilityFilter",
 			"lookback_days": 4,
-			"min_volatility": 0.06,
+			"min_volatility": 0.05,
 			"max_volatility": 0.95,
 			"refresh_period": 14400
 		},
