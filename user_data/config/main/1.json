@@ -2,7 +2,7 @@
 	"max_open_trades": 3,
 	"stake_currency": "USDT",
 	"stake_amount": "unlimited",
-	"available_capital": 210,
+	"available_capital": 200,
 	"amend_last_stake_amount": true,
 	"tradable_balance_ratio": 0.99,
 	"fiat_display_currency": "EUR",
@@ -14,13 +14,9 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 120,
+			"number_assets": 110,
 			"sort_key": "quoteVolume",
 			"refresh_period": 86400
-		},
-		{
-			"method": "OffsetFilter",
-			"offset": 20
 		},
 		{
 			"method": "VolatilityFilter",
