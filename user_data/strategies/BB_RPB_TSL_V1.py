@@ -1128,7 +1128,7 @@ def T3(dataframe, length=5):
 logger = logging.getLogger(__name__)
 
 
-class BB_RPB_TSL_Trailing(BB_RPB_TSL):
+class BB_RPB_TSL_Trailing(BB_RPB_TSL_V1):
     # Original idea by @MukavaValkku, code by @tirail and @stash86
     #
     # This class is designed to inherit from yours and starts trailing buy with your buy signals
