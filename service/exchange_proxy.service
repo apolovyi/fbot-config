@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/opt/exchange-proxy
-ExecStart=/opt/exchange-proxy/dist/exchange-proxy -bindaddr "127.0.0.1" -port 8001 -kucoin-topics-per-ws 150 -verbose 0 -cache-size 1500 -ttl-cache-timeout 5m0s
+ExecStart=/opt/exchange-proxy/dist/exchange-proxy -bindaddr "127.0.0.1" -port 8001 -kucoin-topics-per-ws 150 -verbose 0 -cache-size 300 -ttl-cache-timeout 5m0s
 Restart=always
 RestartSec=3
 StandardOutput=syslog
