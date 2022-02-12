@@ -14,9 +14,9 @@
 	"pairlists": [
 		{
 			"method": "VolumePairList",
-			"number_assets": 90,
+			"number_assets": 120,
 			"sort_key": "quoteVolume",
-			"refresh_period": 14400
+			"refresh_period": 86400
 		},
 		{
 			"method": "OffsetFilter",
@@ -24,10 +24,10 @@
 		},
 		{
 			"method": "VolatilityFilter",
-			"lookback_days": 2,
+			"lookback_days": 3,
 			"min_volatility": 0.03,
 			"max_volatility": 0.95,
-			"refresh_period": 14400
+			"refresh_period": 86400
 		}
 	],
 	"strategy": "BB_RPB_TSL_V1",
