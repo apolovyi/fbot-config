@@ -1,18 +1,16 @@
 {
   "unfilledtimeout": {
-    "buy": 3,
-    "sell": 3,
+    "buy": 4,
+    "sell": 4,
     "unit": "minutes"
   },
   "bid_strategy": {
     "price_side": "bid",
-    "use_order_book": true,
-    "order_book_top": 5
+    "ask_last_balance": 0.5
   },
   "ask_strategy": {
     "price_side": "ask",
-    "use_order_book": true,
-    "order_book_top": 5
+    "bid_last_balance": 0.5
   },
   "order_types": {
     "buy": "limit",

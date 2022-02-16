@@ -4,7 +4,7 @@ After=exchange_proxy.service
 
 [Service]
 WorkingDirectory=/opt/freqtrade
-ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange_proxy.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/2.json --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_m.json --config /opt/freqtrade/user_data/config/pairlist/exclude_shit_v4.json
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config/exchange_proxy.json --config /opt/freqtrade/user_data/config/log.json --config /opt/freqtrade/user_data/config/main/2.json --config /opt/freqtrade/user_data/config/buy_sell/buy_sell_1_05.json --config /opt/freqtrade/user_data/config/pairlist/exclude_shit_v4.json
 Restart=always
 RestartSec=10
 Type=notify
