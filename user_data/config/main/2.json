@@ -30,6 +30,6 @@
       "method": "ShuffleFilter"
     }
   ],
-  "strategy": "BB_RPB_TSL_V1",
+  "strategy": "BB_RPB_TSL",
   "db_url": "sqlite:////opt/freqtrade/user_data/db/bot_8082.sqlite"
 }

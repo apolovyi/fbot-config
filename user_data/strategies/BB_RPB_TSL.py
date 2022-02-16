@@ -1,18 +1,17 @@
 # --- Do not remove these libs ---
+import logging
+from datetime import datetime, timezone
+from functools import reduce
+
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 import numpy as np
-import logging
-import talib.abstract as ta
 import pandas_ta as pta
-
+import talib.abstract as ta
 from freqtrade.persistence import Trade
+from freqtrade.strategy import merge_informative_pair, DecimalParameter, IntParameter
 from freqtrade.strategy.interface import IStrategy
-from pandas import DataFrame, Series, DatetimeIndex, merge
-from datetime import datetime, timedelta, timezone
-from freqtrade.strategy import merge_informative_pair, CategoricalParameter, DecimalParameter, IntParameter, stoploss_from_open
-from freqtrade.exchange import timeframe_to_prev_date
-from functools import reduce
-from technical.indicators import RMI, zema, VIDYA, ichimoku
+from pandas import DataFrame, Series
+from technical.indicators import RMI, zema, VIDYA
 
 
 # --------------------------------
@@ -956,11 +955,11 @@ class BB_RPB_TSL(IStrategy):
         conditions.append(is_nfi_33)  # ~0.11 / 100%                D
         dataframe.loc[is_nfi_33, 'buy_tag'] += 'nfi_33 '
 
-        conditions.append(is_nfi_38)  # ~1.13 / 88.5% / 31.34%      D
-        dataframe.loc[is_nfi_38, 'buy_tag'] += 'nfi_38 '
-
-        conditions.append(is_nfix_5)  # ~0.25 / 97.7% / 6.53%       D
-        dataframe.loc[is_nfix_5, 'buy_tag'] += 'nfix_5 '
+        # conditions.append(is_nfi_38)  # ~1.13 / 88.5% / 31.34%      D
+        # dataframe.loc[is_nfi_38, 'buy_tag'] += 'nfi_38 '
+        #
+        # conditions.append(is_nfix_5)  # ~0.25 / 97.7% / 6.53%       D
+        # dataframe.loc[is_nfix_5, 'buy_tag'] += 'nfix_5 '
 
         conditions.append(is_nfix_49)  # ~0.33 / 100% / 0%           D
         dataframe.loc[is_nfix_49, 'buy_tag'] += 'nfix_49 '
@@ -1226,7 +1225,8 @@ class BB_RPB_TSL_Trailing(BB_RPB_TSL):
             else:
                 # wait for next signal
                 return None
-        elif (self.trailing_buy_uptrend_enabled and (trailing_duration.total_seconds() < self.trailing_expire_seconds_uptrend) and (current_trailing_profit_ratio < (-1 * self.min_uptrend_trailing_profit))):
+        elif (self.trailing_buy_uptrend_enabled and (trailing_duration.total_seconds() < self.trailing_expire_seconds_uptrend) and (
+                current_trailing_profit_ratio < (-1 * self.min_uptrend_trailing_profit))):
             # less than 90s and price is rising, buy
             return 'forcebuy'
 
@@ -1304,7 +1304,9 @@ class BB_RPB_TSL_Trailing(BB_RPB_TSL):
                             elif current_price < trailing_buy['trailing_buy_order_uplimit']:
                                 # update uplimit
                                 old_uplimit = trailing_buy["trailing_buy_order_uplimit"]
-                                self.custom_info_trail_buy[pair]['trailing_buy']['trailing_buy_order_uplimit'] = min(current_price * (1 + trailing_buy_offset), self.custom_info_trail_buy[pair]['trailing_buy']['trailing_buy_order_uplimit'])
+                                self.custom_info_trail_buy[pair]['trailing_buy']['trailing_buy_order_uplimit'] = min(current_price * (1 + trailing_buy_offset),
+                                                                                                                     self.custom_info_trail_buy[pair]['trailing_buy'][
+                                                                                                                         'trailing_buy_order_uplimit'])
                                 self.custom_info_trail_buy[pair]['trailing_buy']['offset'] = trailing_buy_offset
                                 self.trailing_buy_info(pair, current_price)
                                 logger.info(f'update trailing buy for {pair} at {old_uplimit} -> {self.custom_info_trail_buy[pair]["trailing_buy"]["trailing_buy_order_uplimit"]}')
@@ -1313,7 +1315,8 @@ class BB_RPB_TSL_Trailing(BB_RPB_TSL):
                                 val = True
                                 ratio = "%.2f" % ((self.current_trailing_profit_ratio(pair, current_price)) * 100)
                                 self.trailing_buy_info(pair, current_price)
-                                logger.info(f"current price ({current_price}) > uplimit ({trailing_buy['trailing_buy_order_uplimit']}) and lower than starting price price ({(trailing_buy['start_trailing_price'] * (1 + self.trailing_buy_max_buy))}). OK for {pair} ({ratio} %), order may not be triggered if all slots are full")
+                                logger.info(
+                                    f"current price ({current_price}) > uplimit ({trailing_buy['trailing_buy_order_uplimit']}) and lower than starting price price ({(trailing_buy['start_trailing_price'] * (1 + self.trailing_buy_max_buy))}). OK for {pair} ({ratio} %), order may not be triggered if all slots are full")
 
                             elif current_price > (trailing_buy['start_trailing_price'] * (1 + self.trailing_buy_max_stop)):
                                 # stop trailing buy because price is too high
