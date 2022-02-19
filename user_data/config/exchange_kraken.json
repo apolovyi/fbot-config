@@ -8,7 +8,7 @@
     },
     "ccxt_async_config": {
       "enableRateLimit": true,
-      "rateLimit": 3100
+      "rateLimit": 2100
     }
   },
   "api_server": {
