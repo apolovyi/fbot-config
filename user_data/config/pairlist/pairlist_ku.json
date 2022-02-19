@@ -1,0 +1,48 @@
+{
+  "exchange": {
+    "pair_whitelist": [
+      "PAXG/ETH",
+      "KEEP/ETH",
+      "ADA/ETH",
+      "ATOM/ETH",
+      "NANO/ETH",
+      "MANA/ETH",
+      "LTC/ETH",
+      "XRP/ETH",
+      "FLOW/ETH",
+      "OXT/ETH",
+      "QTUM/ETH",
+      "LINK/ETH",
+      "SC/ETH",
+      "XTZ/ETH",
+      "ALGO/ETH",
+      "ANT/ETH",
+      "FIL/ETH",
+      "AAVE/ETH",
+      "KAVA/ETH",
+      "OMG/ETH",
+      "SNX/ETH",
+      "GRT/ETH",
+      "UNI/ETH",
+      "ETC/ETH",
+      "MLN/ETH",
+      "KNC/ETH",
+      "TRX/ETH",
+      "GNO/ETH",
+      "BAL/ETH",
+      "CRV/ETH",
+      "ICX/ETH",
+      "STORJ/ETH",
+      "COMP/ETH",
+      "BAT/ETH"
+    ]
+  },
+  "pairlists": [
+    {
+      "method": "StaticPairList"
+    },
+    {
+      "method": "ShuffleFilter"
+    }
+  ]
+}
