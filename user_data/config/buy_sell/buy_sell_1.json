@@ -1,7 +1,7 @@
 {
   "unfilledtimeout": {
-    "buy": 3,
-    "sell": 3,
+    "buy": 4,
+    "sell": 4,
     "unit": "minutes"
   },
   "bid_strategy": {
